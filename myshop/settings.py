@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 
 DATABASES = {
 
-    'default': {
+    'default': {    
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd7aaoujiifq6a2',
@@ -148,7 +148,7 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
-STATICFILES_DIRS=(os.path.join(BASE_DIR , 'staticfiles'),)
+STATICFILES_DIRS=(os.path.join(BASE_DIR , 'static'),)
 STATIC_ROOT=os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
