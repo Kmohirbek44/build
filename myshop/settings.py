@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.static',
+    'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'charts.apps.ChartsConfig',
     'drfsite.apps.DrfsiteConfig',
