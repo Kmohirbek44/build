@@ -26,7 +26,7 @@ SECRET_KEY = '_xt&rb@t*a$uz_+el5a*b^kw0k8=%^d+6kb4y1tk_q9_efl4$k'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -37,20 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'shop.apps.ShopConfig',
     'charts.apps.ChartsConfig',
     'drfsite.apps.DrfsiteConfig',
     'rest_framework',
     'djoser',
     'rest_framework.authtoken',
-    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -145,10 +145,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-CORS_ORIGIN_WHITELIST = (
-'http://localhost:3000',  # for localhost (REACT Default)
-'http://192.168.10.45:3000', # for network
-)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
