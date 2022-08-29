@@ -1,6 +1,6 @@
 from rest_framework import generics, viewsets, mixins
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, BasePermission, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, BasePermission, IsAdminUser, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, GenericViewSet
@@ -22,7 +22,7 @@ class Listrest(mixins.CreateModelMixin,
                    GenericViewSet):
 
     serializer_class = productserialers
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
     def get_queryset(self):
         pk=self.kwargs.get('pk')
         if not pk:
@@ -45,7 +45,7 @@ class CategoryList(mixins.CreateModelMixin,
                    GenericViewSet):
 
     serializer_class = categoryserialers
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
     def get_queryset(self):
         pk=self.kwargs.get('pk')
         if not pk:
