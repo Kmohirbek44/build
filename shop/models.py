@@ -7,6 +7,7 @@ class Category(models.Model):
                               db_index=True)
   slug = models.SlugField(max_length=50,
                               unique=True)
+  image = models.ImageField(upload_to='products/%y/%m/%d', blank=True, null=True)
 
   class Meta:
     ordering = ('name',)
@@ -24,7 +25,7 @@ class City(models.Model):
                               db_index=True)
   slug = models.SlugField(max_length=50,
                               unique=True)
-
+  image = models.ImageField(upload_to='products/%y/%m/%d', blank=True, null=True)
   class Meta:
     ordering = ('name',)
     verbose_name = 'city'
@@ -39,7 +40,10 @@ class Product(models.Model):
     city = models.ForeignKey('City', on_delete=models.CASCADE, blank=True,null=True)
     name = models.CharField(max_length=250, db_index=True)
     slug = models.SlugField(max_length=250, db_index=True)
-    image = models.ImageField(upload_to='products/%y/%m/%d',blank=True,null=True)
+    image1 = models.ImageField(upload_to='products/%y/%m/%d',blank=True,null=True)
+    image2 = models.ImageField(upload_to='products/%y/%m/%d', blank=True, null=True)
+    image3 = models.ImageField(upload_to='products/%y/%m/%d', blank=True, null=True)
+    image4 = models.ImageField(upload_to='products/%y/%m/%d', blank=True, null=True)
     number_company=models.CharField(max_length=12,default='+998')
     description = models.TextField(default='1')
     price =  models.DecimalField(max_digits=10, decimal_places=2)

@@ -6,7 +6,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, GenericViewSet
 
 from shop.models import Product, Category
-from .serialesers import productserialers
+from .serialesers import productserialers, categoryserialers
+
 
 class any(BasePermission):
     def has_permission(self, request, view):
@@ -28,14 +29,29 @@ class Listrest(mixins.CreateModelMixin,
             return Product.objects.all()[:10]
 
         return Product.objects.filter(pk=pk)
-    @action(methods=['get','post'],detail=True)
-    def category(self,request,pk=None):
-        cat=Category.objects.get(pk=pk)
-        return Response({"category":cat.name})
+    @action(methods=['get','post'],detail=False)
+    def category(self,request):
+
+        cat=categoryserialers(Category.objects.all())
+        return Response({"category":[ car.image for car in cat]})
 
 
+class CategoryList(mixins.CreateModelMixin,
+                   mixins.ListModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
 
+                   GenericViewSet):
 
+    serializer_class = categoryserialers
+    permission_classes = (IsAdminUser,)
+    def get_queryset(self):
+        pk=self.kwargs.get('pk')
+        if not pk:
+            return Category.objects.all()[:10]
+
+        return Category.objects.filter(pk=pk)
 
 
 

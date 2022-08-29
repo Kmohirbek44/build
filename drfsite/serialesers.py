@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from shop.models import Product
+from shop.models import Product, Category
 
 
 # class productserialers(serializers.ModelSerializer):
@@ -13,6 +13,10 @@ from shop.models import Product
 class productserialers(serializers.ModelSerializer):
     class Meta:
         model=Product
+        exclude=("id",)
+class categoryserialers(serializers.ModelSerializer):
+    class Meta:
+        model=Category
         exclude=("id",)
     # category_id=serializers.IntegerField()
     # city_id=serializers.IntegerField()
