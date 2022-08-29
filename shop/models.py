@@ -40,7 +40,6 @@ class Product(models.Model):
     name = models.CharField(max_length=250, db_index=True)
     slug = models.SlugField(max_length=250, db_index=True)
     image = models.ImageField(upload_to='products/%y/%m/%d',blank=True,null=True)
-    company_name=models.CharField(max_length=250)
     number_company=models.CharField(max_length=12,default='+998')
     description = models.TextField(default='1')
     price =  models.DecimalField(max_digits=10, decimal_places=2)
