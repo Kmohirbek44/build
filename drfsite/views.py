@@ -4,9 +4,10 @@ from rest_framework.permissions import IsAuthenticated, BasePermission, IsAdminU
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, GenericViewSet
-
+from django_filters.rest_framework import DjangoFilterBackend
 from shop.models import Product, Category
 from .serialesers import productserialers, categoryserialers
+
 
 
 class any(BasePermission):
@@ -23,12 +24,17 @@ class Listrest(mixins.CreateModelMixin,
 
     serializer_class = productserialers
     permission_classes = (AllowAny,)
-    def get_queryset(self):
-        pk=self.kwargs.get('pk')
-        if not pk:
-            return Product.objects.all()[:10]
 
-        return Product.objects.filter(pk=pk)
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Product.objects.all()
+        category = self.request.query_params.get('category')
+        if category is not None:
+            queryset = queryset.filter(category__id=category)
+        return queryset
     @action(methods=['get','post'],detail=False)
     def category(self,request):
 

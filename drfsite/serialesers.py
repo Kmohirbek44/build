@@ -13,7 +13,7 @@ from shop.models import Product, Category
 class productserialers(serializers.ModelSerializer):
     class Meta:
         model=Product
-        exclude=("id",)
+        exclude=("city",)
 class categoryserialers(serializers.ModelSerializer):
     class Meta:
         model=Category
