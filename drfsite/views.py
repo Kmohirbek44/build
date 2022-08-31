@@ -32,7 +32,7 @@ class Listrest(mixins.CreateModelMixin,
         queryset = Product.objects.all()
         category = self.request.query_params.get('category')
         if category is not None:
-            queryset = queryset.filter(category__id=category)
+            queryset = queryset.filter(category__slug=category)
         return queryset
     @action(methods=['get','post'],detail=False)
     def category(self,request):
