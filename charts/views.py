@@ -54,14 +54,14 @@ def charts(request):
 			   'align':'left','x':50}
 		},     	  
 		'title': {
-			'text':'Products by Categories'
+			'text':'Mahsulotlar soni'
 		},
 	    'legend': {
 	    	'enabled':'false'
 	    },
 		'yAxis': {
 			'title': {
-				'text':'Number of Parts'}
+				'text':'Soni'}
 		},
 		'xAxis': {
 			'categories':categories
