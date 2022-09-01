@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '_xt&rb@t*a$uz_+el5a*b^kw0k8=%^d+6kb4y1tk_q9_efl4$k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -84,20 +84,11 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd11bv3h0iker3c',
-        'USER': 'mpsqgbezexrxds',
-        'PASSWORD': '854e47f3e2649a3f5440e0f374eed7ac79495aec1e4e1b8e6806dac4cc2304b9',
-        'HOST': 'ec2-34-234-240-121.compute-1.amazonaws.com',
-        'PORT': '5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
-
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
