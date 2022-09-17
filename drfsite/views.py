@@ -25,10 +25,7 @@ class Listrest(mixins.CreateModelMixin,
     permission_classes = (AllowAny,)
 
     def get_queryset(self):
-        """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
-        """
+       
         queryset = Product.objects.all()
         category = self.request.query_params.get('category')
         if category is not None:
