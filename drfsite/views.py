@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated, BasePermission, IsAdminU
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, GenericViewSet
+
+import shop.models
 from shop.models import Product, Category
 from .serialesers import productserialers, categoryserialers
 
@@ -49,11 +51,12 @@ class CategoryList(mixins.CreateModelMixin,
     serializer_class = categoryserialers
     permission_classes = (AllowAny,)
     def get_queryset(self):
-        pk=self.kwargs.get('pk')
+        pk=shop.models.Category.objects.all()
+        print(pk)
         if not pk:
             return Category.objects.all()[:10]
 
-        return Category.objects.filter(pk=pk)
+        return Category.objects.all().order_by('pk')
 
 
 
