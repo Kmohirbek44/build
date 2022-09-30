@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'shop.apps.ShopConfig',
-    'charts.apps.ChartsConfig',
     'drfsite.apps.DrfsiteConfig',
     'rest_framework',
     'djoser',
